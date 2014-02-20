@@ -84,7 +84,8 @@ function put(request, response) {
                 var email1 = login.email(sid);
                 login.logout(sid);
                 var refreshedSessionId = login.login(name1, email1);
-                console.log(refreshedSessionId);
+		response.setHeader('Set-Cookie', 'session_id=' + refreshedSessionId);
+		console.log(refreshedSessionId);
                 response.end('Re-freshed session id\n');
             }
 
